@@ -2,8 +2,13 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-url= 'https://github.com/PSMORAN01/streamlit-car-analysis/raw/refs/heads/main/vehicles_us.csv'
-car_data = pd.read_csv(url) # leer los datos
+url = 'https://raw.githubusercontent.com/PSMORAN01/streamlit-car-analysis/main/vehicles_us.csv'
+
+try:
+    car_data = pd.read_csv(url)
+    st.write("Datos cargados exitosamente.")
+except Exception as e:
+    st.error(f"Error al leer el archivo CSV: {e}")
 
 # Título de la aplicación
 st.title('Informe de Vehículos')
